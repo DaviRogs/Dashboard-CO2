@@ -6,53 +6,57 @@ import plotly.graph_objects as go
 from pandas import read_csv
 
 
-# ======================================================================================================
-# Backend
-app = Dash(__name__) #Código padrão do Dash
+app = Dash(__name__)
 
-df = read_csv("annual-co2-emissions-per-country.csv") #Utilização do pandas para ler o csv
+df = read_csv("annual-co2-emissions-per-country.csv")
 df_array = df.values
 
-anos = []
+
+#filtro dos anos
+anos = [] 
 for linha in df_array:
-    if linha[2] in range (1987,2021):
-        try:
-            anos.append(int(linha[2]))
-        except:
-            continue
+    if linha[2] in range(1987,2021):
+        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
+            anos.append(linha[2])
 
-total_ano = 0 # Conta a quantidade de países
-anos_filtro = [] # Criar array em que cada item vai ser quantos jogos foram lançados em cada ano
-todos = [] # Todos é uma array para guardar todos os anos analisados
+anos = sorted(anos)
 
-for i in range(1987, 2021):
-    total_ano = anos.count(i)
-    anos_filtro.append(total_ano)
-    todos.append(i)
+#filtro dos países
+paises = [] 
+for linha in df_array:
+    if linha[2] in anos:
+        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
+            paises.append(linha[0])
 
-print(todos)
+#filtro dos códigos dos países
+codigo = []
+for linha in df_array:
+    if linha[2] in anos:
+        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
+            codigo.append(linha[1])
 
-    # Gráfico
+#filtro do nível
+nivel = []
+for linha in df_array:
+    if linha[2] in anos:
+        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
+            nivel.append(linha[3])
+
+print(anos)
+print(paises)
+
+#Gráfico
 fig = px.choropleth(
-    data_frame=df, 
-    locations="Code", 
-    color="Annual CO2 emissions", 
-    hover_name="Entity",
-    animation_frame=sorted(df["Year"]),
+    locations=codigo, 
+    color=nivel,
+    hover_name=paises,
+    animation_frame=anos,
     range_color=[0,1000000000],
     color_continuous_scale=px.colors.sequential.YlOrRd
 )
 fig.show()
 
-# ======================================================================================================
-# Frontend
-
-
-
-# ======================================================================================================
-#
-
-if __name__ == '__main__': # Código padrão do Dash
+if __name__ == '__main__':
     app.run_server(debug=True)
 
 '''
