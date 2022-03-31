@@ -11,7 +11,18 @@ DashBoard = Dash(__name__)
 
 df = read_csv("annual-co2-emissions-per-country.csv")
 
+'''
+Estamos importando as bibliotecas essenciais para o funcionamento dos nossos gráficos e o site a ser
+executado.
+
+Além disso, já colocamos nosso código para ler o arquivo CSV o qual apresenta todos os dados necessários
+para realizarmos os gráficos.
+'''
+
 #--------------------------------------------------------------------------------------------------------------------
+
+
+# 1ª Parte
 
 df_array = df.values #Importando todos os valores do DataFrame para um variável listável (df_array).
 
@@ -36,6 +47,16 @@ for linha in df_array: #Para cada linha do df_array, faça:
 
 #print(d_continentes)
 
+'''
+O que queremos nessa parte é filtrar nossos dados somente para os continentes que o arquivo CSV possui,
+caso contrário, em qualquer utilização do mesmo resultaria na saída de todas as informções de cada país,
+continentes e o todo (World).
+
+É importante saber que essas informações estão sendo guardadas em uma lista na variável "d_continentes"
+para usarmos ele futuramente.
+
+Obs: Estão sendo guardados somente a emissão de CO2 dos continentes (linha[3]).
+'''
 #--------------------------------------------------------------------------------------------------------------------
 # 2ª Parte
 
@@ -78,6 +99,13 @@ for cont in range(170,204):
 #Criamos uma variável dos continentes para usarmos futuramente no dropdown (caixa de opções) e no nosso gráfico (FigBarras)
 continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul']
 
+'''
+Estamos dividindo os dados da variável "d_continentes", para cada continente.
+Vale lembrar que eles já estão em ordem, uma vez que a leitura dos dados foi feito linha por linha
+da variável "d_continentes".
+
+Além disso, criamos uma variável "continentes" somente com os continentes que usaremos mais para frente. 
+'''
 #--------------------------------------------------------------------------------------------------------------------
 # Parte - Layout da página
 
@@ -154,6 +182,10 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
         
     return FigBarras #retorna o novo gráfico filtrado com o continente selecionado no dropdown
 
+'''
+Utilizaremos essa parte do código para que, toda vez o qual o usuário mudar o continente desejável, a function
+atualizará/sobrescreverá a FIGBARRA com o continente filtrado da escolha do usuário.
+'''
 #-----------------------------------------------------------------------------------------------------------
 
 # Colocando servidor pra rodar
