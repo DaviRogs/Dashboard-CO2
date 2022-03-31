@@ -152,7 +152,7 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
             y = South_America
         )
         
-    return FigBarras #retorna o novo gráfico filtrado com o continente selecionado no dropdown.
+    return FigBarras #retorna o novo gráfico filtrado com o continente selecionado no dropdown
 
 #-----------------------------------------------------------------------------------------------------------
 
