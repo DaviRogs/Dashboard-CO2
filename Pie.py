@@ -1,7 +1,6 @@
 # Importação das bibliotecas que utilizaremos:
 
-from dash import Dash, html, dcc, Input, Output
-from numpy import where #importante para a criação do site e alguma coisa dos gráficos;
+from dash import Dash, html, dcc, Input, Output #importante para a criação do site e alguma coisa dos gráficos;
 import plotly.express as px #Para funcionalidades do Plotly, assim criando nosso gráfico;
 from pandas import read_csv #Para Leituras de bases de Dados, como excel, CSV, etc...
 
