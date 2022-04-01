@@ -30,41 +30,6 @@ df_array = df.values
 
 # print(df_array)
 
-d_continentes = [] # Dados por continentes
-
-#Filtrando nossos dados
-for linha in df_array: #Para cada linha do df_array, faça:
-    if linha[2] in range(1987,2021): #Se essa linha, no índice 2 ser 1987 pra frente, faça:
-        if linha[0] == 'Africa': #Se essa mesma linha ter, no índice 0, a "Africa", faça:
-            d_continentes.append(linha[3]) #Adicione (Append) um novo valor na variável d_continentes. 
-        elif linha[0] == 'Asia': #Ou se essa mesma linha, no mesmo índice, ser "Asia", faça:
-            d_continentes.append(linha[3])
-        elif linha[0] == 'Europe':
-            d_continentes.append(linha[3])
-        elif linha[0] == 'North America':
-            d_continentes.append(linha[3])
-        elif linha[0] == 'Oceania':
-            d_continentes.append(linha[3])
-        elif linha[0] == 'South America':
-            d_continentes.append(linha[3])
-
-# print(d_continentes)
-# print(len(d_continentes))
-
-'''
-O que queremos nessa parte é filtrar nossos dados somente para os continentes que o arquivo CSV possui,
-caso contrário, em qualquer utilização do mesmo resultaria na saída de todas as informções de cada país,
-continentes e o todo (World).
-
-É importante saber que essas informações estão sendo guardadas em uma lista na variável "d_continentes"
-para usarmos ele futuramente.
-
-Obs: Estão sendo guardados somente a emissão de CO2 dos continentes (linha[3]).
-'''
-#------------------------------------------------------------------------------------------------------------
-
-# 2ª Parte
-
 #Criando uma nova lista filtrada com o que queremos
 Africa = []
 Asia = []
@@ -73,48 +38,52 @@ North_America = []
 Oceania = []
 South_America = []
 
-A_cont = 0 #Contador para aumentar os anos
+ano_começo = 1987
+ano_fim = 2021
 
-for cont in range(0,34):
-    Africa.append(d_continentes[cont])
-    A_cont += 1
-A_cont = 0
-for cont in range(34,68):
-    Asia.append(d_continentes[cont])
-    A_cont += 1
-A_cont = 0
-for cont in range(68,102):
-    Europe.append(d_continentes[cont])
-    A_cont += 1
-A_cont = 0
-for cont in range(102,136):
-    North_America.append(d_continentes[cont])
-    A_cont += 1
-A_cont = 0
-for cont in range(136,170):
-    Oceania.append(d_continentes[cont])
-    A_cont += 1
-A_cont = 0
-for cont in range(170,204):
-    South_America.append(d_continentes[cont])
-    A_cont += 1
-A_cont = 0
+while ano_começo != ano_fim:
+    for linha in df_array: #Para cada linha do df_array, faça:
+        if linha[2] == ano_começo: #Se essa linha, no índice 2 ser o ano_começo pra frente, faça:
+            if linha[0] == 'Africa': #Se essa mesma linha ter, no índice 0, a "Africa", faça:
+                Africa.append(linha[3]) #Adicione (Append) um novo valor na variável Africa. 
+            elif linha[0] == 'Asia': #Ou se essa mesma linha, no mesmo índice, ser "Asia", faça:
+                Asia.append(linha[3])
+            elif linha[0] == 'Europe':
+                Europe.append(linha[3])
+            elif linha[0] == 'North America':
+                North_America.append(linha[3])
+            elif linha[0] == 'Oceania':
+                Oceania.append(linha[3])
+            elif linha[0] == 'South America':
+                South_America.append(linha[3])
+    ano_começo +=1
 
 # print(Africa)
-# print(Asia) 
+# print(Asia)
 # print(Europe)
 # print(North_America)
 # print(Oceania)
 # print(South_America)
 
+
 '''
-Estamos dividindo os dados da variável "d_continentes", para cada continente.
-Vale lembrar que eles já estão em ordem, uma vez que a leitura dos dados foi feito linha por linha
-da variável "d_continentes".
+O que queremos nessa parte é filtrar nossos dados somente para os continentes que o arquivo CSV possui,
+caso contrário, em qualquer utilização do mesmo resultaria na saída de todas as informções de cada país,
+continentes e o todo (World).
+
+Já estamos dividindo os dados da variável para cada continente.
+Vale lembrar que eles já estão em ordem, uma vez que a leitura dos dados já foi feita linha por linha
+da variável.
+
+É importante saber que essas informações estão sendo guardadas em uma lista de variável de cada continentes,
+assim, usaremos ele futuramente.
+
+Obs: Estão sendo guardados somente a emissão de CO2 dos continentes (linha[3]).
 '''
+
 #--------------------------------------------------------------------------------------------------------
 
-# 3ª Parte
+# 2ª Parte
 
 #-------------------------
 continentes = ['Áfica', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul']
