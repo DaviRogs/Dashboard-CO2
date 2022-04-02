@@ -73,10 +73,15 @@ para pôr devidamente ao seu ano.
 
 # 2ª Parte
 
-#-------------------------
 continentes = ['Áfica', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul']
-#-------------------------
 
+# ↓↓↓ Cria uma lista dos anos que utilizaremos para filtrar nossos dados e para fazer o dropdown.
+Anos = list(range(1987,2021))
+
+'''
+Utilizaremos essa lista tanto para criarmos o corpo do nosso gráfico de pizza/torta, quanto para tradução
+dos nossos continentes. 
+'''
 #---------------------------------------------------------------------------------------------------------------
 
 # Parte - Layout da página
@@ -85,10 +90,6 @@ FigPizza = px.pie(
   names= continentes,
   values= continentes
 )
-
-#Criar os anos
-Anos = range(1987,2021) #Cria uma Variável Anos para fazer nossa caixa de anos em ordem
-opcoes = list(Anos) # Fazer uma outra variável para fazer uma listagem de Anos
 
 # Ciando o layout da página que será hospedada nosso gráfico
 
@@ -100,7 +101,7 @@ DashBoard.layout = html.Div(children=[
     '''), #Observação
 
     #Cria uma lista radio para que o usuário escolha o ano a visualizar
-    dcc.Dropdown(opcoes, value=1987, id='Anos'),
+    dcc.Dropdown(Anos, value=1987, id='Anos'),
 
     #Utilizamos esse comando para que o site/aplicativo insira nosso gráfico de pizza.
     dcc.Graph(
@@ -123,28 +124,31 @@ faça um input/saída da informação que ele deseja.
     Input('Anos', 'value') # Entrada será o value do ID "Anos", ou seja, o dcc.dropdawn.
 )
 
+# Sem uma função, o callback se torna inútil, pois isso:
 def update_output(value):
-  ano = []
+  ano_especifico = [] #Lista vazia
 
-  if value == value:
-    i = 0
-    while i != 34:
-      if value == Anos[i]:
-        posição = i
-        break
-      i += 1
+  if value == value: # Toda vez que o usuário mudar o input (caixa de opções)
+    i = 0 
+    while i < 34: #Enquanto 'i' for menor de 34, faça:
+      if value == Anos[i]: # Se o value for igual que o índice 'i' da lista 'Anos', faça:
+        posição = i # A Posição (que utilizaremos para adicionar somente as emissões do ano específico)
+        break # Quebra do looping
+      i += 1 # i = i + 1
 
-    for continente in emissoes:
-      ano.append(emissoes[continente][posição])
+    for continente in emissoes: # Para cada linha dentro do dicionário 'emissoes', faça:
+      # ↓↓↓ Acrescente somente os dados de emissão, de cada continente, da posição do ano específico
+      ano_especifico.append(emissoes[continente][posição])
 
     FigPizza = px.pie(
     names= continentes,
-    values= ano
+    values= ano_especifico
     )
 
-  return FigPizza
-
-# Sem uma função, o callback se torna inútil, pois isso:
+    '''
+    Criando o novo gráfico filtrado somente com os anos escolhido pelo usuário.
+    '''
+  return FigPizza #Retorne a nova FigPizza filtrada
 
 '''
 Utilizaremos essa parte do código para que, toda vez o qual o usuário mudar o ano desejável, a function
@@ -157,7 +161,7 @@ do ano escolhido.
 Ao final da função, ele retornará a nova function.
 '''
 #-----------------------------------------------------------------------------------------------------------
-# Colocando nossos gráficos pra rodar
+# Colocando nossos gráficos pra rodar:
 
 if __name__ == '__main__':
     DashBoard.run_server(debug=True)
