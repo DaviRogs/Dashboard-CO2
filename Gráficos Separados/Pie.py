@@ -20,7 +20,6 @@ executado.
 Além disso, já colocamos nosso código para ler o arquivo CSV o qual apresenta todos os dados necessários
 para realizarmos os gráficos.
 '''
-
 #----------------------------------------------------------------------------------------------------------
 
 # 1ª Parte
@@ -109,7 +108,6 @@ DashBoard.layout = html.Div(children=[
         figure= FigPizza #Qual gráfico será exibido na página web local do computador
     )
 ])
-
 #-----------------------------------------------------------------------------------------------------------
 
 # Parte - Botando o dropdown pra funcionar
@@ -146,7 +144,7 @@ def update_output(value):
 
   return FigPizza
 
-#Sem uma função, o callback se torna inútil, pois isso:
+# Sem uma função, o callback se torna inútil, pois isso:
 
 '''
 Utilizaremos essa parte do código para que, toda vez o qual o usuário mudar o ano desejável, a function
@@ -158,7 +156,6 @@ do ano escolhido.
 
 Ao final da função, ele retornará a nova function.
 '''
- 
 #-----------------------------------------------------------------------------------------------------------
 # Colocando nossos gráficos pra rodar
 

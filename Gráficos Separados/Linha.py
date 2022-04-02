@@ -30,7 +30,10 @@ anos = list(range(1750,2021))
 
 # print(anos)
 
-fig = px.line( x=anos, y=World)
+fig = px.line(
+    x=anos,
+    y=World
+    )
 
 fig.show()
 
