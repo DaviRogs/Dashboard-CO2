@@ -165,3 +165,13 @@ Ao final da função, ele retornará a nova function.
 
 if __name__ == '__main__':
     DashBoard.run_server(debug=True)
+
+'''
+Referências:
+
+- Monitor Marcelo Moura com explanação sobre o dicionário;
+- Monitor Gustavo Henrique com suas otimizações e exemplo de seus projetos anteriores;
+- Trabalho do monitor Gustavo Henrique: https://github.com/GustavoHenrique23/TrabalhoAPC/blob/master/app.py
+- Vídeo recomendado pelos monitores: https://www.youtube.com/watch?v=aS64PvDqCbU
+- Leozin, que deu uma grande força e me ajudou bastante a corrigir erros.
+'''
