@@ -167,6 +167,7 @@ fig4 = px.pie(
 
 app.layout = html.Main(id='graphs', className='graficos',
     children = [
+        html.H1(className = 'title', children='CO2'),
         html.Div(className='grafico_1',
             children = [
                 dcc.Graph(figure=fig1),

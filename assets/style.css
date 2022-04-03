@@ -1,4 +1,37 @@
-.grafico_1 {
-    height: 500px;
-    width: 750px;
+body{
+    background-color: #DCDCDC
 }
+.title {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.grafico_1 {
+    height: 33vmax;
+    width: 47.3vmax;
+    border: 10px groove;
+    float: left;
+}
+
+.grafico_2 {
+    height: 33vmax;
+    width: 47.3vmax;
+    border: 10px groove;
+    float: right;
+}
+
+.grafico_3 {
+    height: 35.5vmax;
+    width: 47.3vmax;
+    border: 10px groove;
+    float: right;
+}
+
+.grafico_4 {
+    height: 35.5vmax;
+    width: 47.3vmax;
+    border: 10px groove;
+    float: right;
+}
+
