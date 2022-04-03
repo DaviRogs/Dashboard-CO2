@@ -260,7 +260,7 @@ def update_output(value):
       # ↓↓↓ Acrescente somente os dados de emissão, de cada continente, da posição do ano específico
       ano_especifico.append(emissoes[continente][posição])
 
-    FigPizza = px.pie(
+    fig4 = px.pie(
     names= continentes,
     values= ano_especifico
     )
@@ -268,7 +268,7 @@ def update_output(value):
     '''
     Criando o novo gráfico filtrado somente com os anos escolhido pelo usuário.
     '''
-  return FigPizza
+  return fig4
   
 #---------------------------------------------------------------------------------------------------------
 #
