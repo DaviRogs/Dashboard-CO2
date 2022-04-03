@@ -1,3 +1,4 @@
+from turtle import width
 from pandas import read_csv
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
@@ -23,7 +24,8 @@ anos = list(range(1750,2021))
 fig1 = px.line(
     x=anos,
     y=world
-    )
+)
+
 
 #---------------------------------------------------------------------------------------------------------
 #Grafico2
@@ -124,7 +126,7 @@ while ano_começo != ano_fim:
                 South_America.append(linha[3])
     ano_começo +=1
 
-continentes = ['Áfica', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul']
+continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul']
 
 fig3 = px.bar(
             x=anos, 
@@ -149,7 +151,7 @@ for linha in df_array: # para cada linha do df_array...:
         # ↓↓↓ Acrescente no dicionário, no índice da emissão/continente, o índice 3 do df_array.
         emissoes[emissao].append(linha[3])
 
-continentes = ['Áfica', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul']
+continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul']
 
 Anos = list(range(1987,2021))
 
@@ -167,7 +169,7 @@ app.layout = html.Main(id='graphs', className='graficos',
     children = [
         html.Div(className='grafico_1',
             children = [
-                dcc.Graph(figure=fig1)
+                dcc.Graph(figure=fig1),
             ]
         ),
         html.Div(className='grafico_2',
