@@ -140,41 +140,45 @@ fig4 = px.pie(
 #---------------------------------------------------------------------------------------------------------
 #HTML
 
-app.layout = html.Main(id='graphs', className='graficos',
+app.layout = html.Main(id='graphs', className='container',
     children = [
         html.H1(className = 'title', children='CO2'),
-        html.Div(className='grafico_1',
-            children = [
-                dcc.Graph(
-                    className='g1',
-                    figure=fig1),
-            ]
-        ),
-        html.Div(className='grafico_2',
-            children = [
-                dcc.Graph(figure=fig2)
-            ]
-        ),
-        html.Div(className='grafico_3',
-            children = [
-                dcc.Dropdown(continents, value='Africa' , id='continentes'),
-                dcc.Graph(
-                    id='Grafico_Barras_CO2',
-                    figure=fig3
-                )
-            ]
-        ),
-        html.Div(className='grafico_4',
-            children = [
-                dcc.Dropdown(Anos, value=1987, id='Anos'),
-                dcc.Graph(
-                    id='Grafico_Pizza_CO2',
-                    figure=fig4
+        html.Div(className='graficos',
+            children=[
+                html.Div(className='grafico_1',
+                            children = [
+                                dcc.Graph(
+                                    className='g1',
+                                    figure=fig1),
+                            ]
+                        ),
+                        html.Div(className='grafico_2',
+                            children = [
+                                dcc.Graph(figure=fig2)
+                            ]
+                        ),
+                        html.Div(className='grafico_3',
+                            children = [
+                                dcc.Dropdown(continents, value='Africa' , id='continentes'),
+                                dcc.Graph(
+                                    id='Grafico_Barras_CO2',
+                                    figure=fig3
+                                )
+                            ]
+                        ),
+                        html.Div(className='grafico_4',
+                            children = [
+                                dcc.Dropdown(Anos, value=1987, id='Anos'),
+                                dcc.Graph(
+                                    id='Grafico_Pizza_CO2',
+                                    figure=fig4
+                        )
+                    ]
                 )
             ]
         )
     ]
-)
+)        
 
 #-------------------------------------------------------------------------------------------------------------------
 #Callback
