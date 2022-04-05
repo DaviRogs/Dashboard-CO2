@@ -41,12 +41,6 @@ for linha in df_array:
             anos.append(linha[2])
 anos = sorted(anos)
 
-paises = [] 
-for linha in df_array:
-    if linha[2] in anos:
-        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
-            paises.append(linha[0])
-
 paises_ordenados = []
 ano_come = 1750
 ano_fim = 2021
@@ -57,12 +51,6 @@ while ano_fim != ano_come:
                 paises_ordenados.append(linha[0])
     ano_come += 1
 
-codigo = []
-for linha in df_array:
-    if linha[2] in anos:
-        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
-            codigo.append(linha[1])
-
 codigo_ordenado = []
 ano_come = 1750
 ano_fim = 2021
@@ -72,12 +60,6 @@ while ano_fim != ano_come:
             if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
                 codigo_ordenado.append(linha[1])
     ano_come += 1
-
-nivel = []
-for linha in df_array:
-    if linha[2] in anos:
-        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
-            nivel.append(linha[3])
 
 nivel_ordenado = []
 ano_come = 1750
