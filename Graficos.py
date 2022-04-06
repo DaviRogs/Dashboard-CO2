@@ -1,6 +1,5 @@
 #Importação das bibliotecas
 
-from turtle import screensize
 from pandas import read_csv
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
@@ -115,11 +114,6 @@ app.layout = html.Main(id='graphs', className='container',
                     src='assets\Logo.jpg')
                 ]
             ),
-        html.Div(className='title',
-            children= [
-                html.H5(title='emissões'
-                )
-            ]),
         html.Div(className='graficos',
             children=[
                 html.Div(className='grafico_1',
@@ -164,7 +158,7 @@ app.layout = html.Main(id='graphs', className='container',
 @app.callback(
     # ↓↓↓ Saída será a nova uma nova figura/gráfico com a filtragem do continente escolhido
     Output('Grafico_Barras_CO2', 'figure'),
-    Input('continentes', 'value')  # Entrada será o value do ID "continentes", ou seja, o dcc.dropdown.
+    Input('continentes', 'value') # Entrada será o value do ID "continentes", ou seja, o dcc.dropdown.
 )
 
 # Função o G.Barras para processar o novo gráfico filtrado
