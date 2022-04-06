@@ -1,5 +1,6 @@
 #Importação das bibliotecas
 
+from turtle import screensize
 from pandas import read_csv
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
@@ -7,18 +8,20 @@ import plotly.express as px
 app = Dash(__name__, title='Emissão de CO2')
 
 df = read_csv("annual-co2-emissions-per-country.csv")
-df_array = df.values
+
+df_array = df.values #Tranformando tudo o que estiver no df em uma lista para parar de usar a extensão Pandas no código.
 
 #---------------------------------------------------------------------------------------------------------
 #Grafico1
 
 world = []
 
+# Colocando os dados do mundo na lista vazia
 for linha in df_array:
     if linha[0] == "World":
         world.append(linha[3])
-anos = list(range(1750,2021))
 
+anos = list(range(1750,2021))
 
 fig1 = px.line(
     x=anos,
@@ -34,23 +37,10 @@ fig1.update_layout(
 #---------------------------------------------------------------------------------------------------------
 #Grafico2
 
-anos = [] 
-for linha in df_array:
-    if linha[2] in range(1750,2021):
-        if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
-            anos.append(linha[2])
-anos = sorted(anos)
-
+# Acrescentando os dados para por no gráfico de mapa
+anos = []
 paises_ordenados = []
-ano_come = 1750
-ano_fim = 2021
-while ano_fim != ano_come:
-    for linha in df_array:
-        if linha[2] == ano_come:
-            if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
-                paises_ordenados.append(linha[0])
-    ano_come += 1
-
+nivel_ordenado = []
 codigo_ordenado = []
 ano_come = 1750
 ano_fim = 2021
@@ -58,18 +48,13 @@ while ano_fim != ano_come:
     for linha in df_array:
         if linha[2] == ano_come:
             if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
+                paises_ordenados.append(linha[0])
                 codigo_ordenado.append(linha[1])
-    ano_come += 1
-
-nivel_ordenado = []
-ano_come = 1750
-ano_fim = 2021
-while ano_fim != ano_come:
-    for linha in df_array:
-        if linha[2] == ano_come:
-            if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
+                anos.append(linha[2])
                 nivel_ordenado.append(linha[3])
     ano_come += 1
+
+anos = sorted(anos)
 
 fig2 = px.choropleth(
     locations=codigo_ordenado, #Posição do país no mapa
@@ -83,8 +68,9 @@ fig2 = px.choropleth(
 #---------------------------------------------------------------------------------------------------------
 #Dados para Gráficos 3 e 4.
 
+# Dicionário com os continentes
 emissoes =	{
-  'Africa': [], # Continentes/Key : valor(es) =(lista vazia)
+  'Africa': [], # Continentes/Key : valor(es) = (lista vazia)
   'Asia': [],
   'Europe': [],
   'North America': [],
@@ -92,11 +78,11 @@ emissoes =	{
   'South America': [],
 }
 
-for linha in df_array: # para cada linha do df_array...:
-  for emissao in emissoes: # E para cada linha/key do dicionário 'emissoes', faça:
-    if linha[0] == emissao: # Se a linha sendo lida do df_array, no índice 0, ser o mesmo que a linha da "Emissões"...
-      if 1987 <= linha[2]:  # E a linha do df_array, no índice 2, ser maior ou igual a 1987, faça:
-        # ↓↓↓ Acrescente no dicionário, no índice da emissão/continente, o índice 3 do df_array.
+# Adicionando os dados de emissão para cada lista de continentes do dicionário
+for linha in df_array:
+  for emissao in emissoes:
+    if linha[0] == emissao: # continente sendo lido no momento no df == 'key' do dicionário.
+      if 1987 <= linha[2]: # Não queremos todos os anos, filtramos ele.
         emissoes[emissao].append(linha[3])
 
 Anos = list(range(1987,2021))
@@ -108,23 +94,32 @@ continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'Am
 #Grafico3
 
 fig3 = px.bar(
-            x=anos, 
-            y=anos)
+    x=anos, 
+    y=anos)
 
 #----------------------------
 #Grafico4
 
 fig4 = px.pie(
   names= continentes,
-  values= continentes
-)
+  values= continentes)
 
 #---------------------------------------------------------------------------------------------------------
-#HTML
+#HTML - Esqueleto da página Dash
 
 app.layout = html.Main(id='graphs', className='container',
     children = [
-        html.H1(className = 'title', children='CO2'),
+        html.Div(
+            children= [
+                html.Img(id='logo',
+                    src='assets\Logo.jpg')
+                ]
+            ),
+        html.Div(className='title',
+            children= [
+                html.H5(title='emissões'
+                )
+            ]),
         html.Div(className='graficos',
             children=[
                 html.Div(className='grafico_1',
@@ -163,14 +158,17 @@ app.layout = html.Main(id='graphs', className='container',
 )        
 
 #-------------------------------------------------------------------------------------------------------------------
-#Callback
+#Callback's
 
+# Callback do gráfico de barras (intermediário entre a função o dropdown)
 @app.callback(
+    # ↓↓↓ Saída será a nova uma nova figura/gráfico com a filtragem do continente escolhido
     Output('Grafico_Barras_CO2', 'figure'),
-    Input('continentes', 'value')
+    Input('continentes', 'value')  # Entrada será o value do ID "continentes", ou seja, o dcc.dropdown.
 )
 
-def atualizar_output(value): #Definindo uma função com o parâmetro value do input recebido
+# Função o G.Barras para processar o novo gráfico filtrado
+def atualizar_output(value): #Definindo uma função com o parâmetro value do input recebido de callback
     if value == value:
 
         for continent in continents:
@@ -190,25 +188,26 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
 
     return fig3
 
+# Callback do Gráfico de Pizza (intermediário entre a função o dropdown)
 @app.callback(
-    # ↓↓↓ Saída será a nova uma nova figura/gráfico com a filtragem do ano escolhido
     Output('Grafico_Pizza_CO2', 'figure'),
-    Input('Anos', 'value') # Entrada será o value do ID "Anos", ou seja, o dcc.dropdawn.
+    Input('Anos', 'value')
 )
 
+# Função o G.Pizza para processar o novo gráfico filtrado
 def update_output(value):
-  ano_especifico = [] #Lista vazia
+  ano_especifico = []
 
-  if value == value: # Toda vez que o usuário mudar o input (caixa de opções)
+  if value == value:
     i = 0 
-    while i < 34: #Enquanto 'i' for menor de 34, faça:
-      if value == Anos[i]: # Se o value for igual que o índice 'i' da lista 'Anos', faça:
-        posição = i # A Posição (que utilizaremos para adicionar somente as emissões do ano específico)
+    while i < 34: # 33 anos entre 1987 à 2020
+      if value == Anos[i]:
+        posição = i # Marca a posição do ano que o usuário escolheu
         break # Quebra do looping
       i += 1 # i = i + 1
 
-    for continente in emissoes: # Para cada linha dentro do dicionário 'emissoes', faça:
-      # ↓↓↓ Acrescente somente os dados de emissão, de cada continente, da posição do ano específico
+    for continente in emissoes:
+      # ↓↓↓ Acrescentando somente os dados de emissão, de cada continente, no índice/posição do ano específico
       ano_especifico.append(emissoes[continente][posição])
 
     fig4 = px.pie(
@@ -216,12 +215,10 @@ def update_output(value):
     values= ano_especifico
     )
 
-    '''
-    Criando o novo gráfico filtrado somente com os anos escolhido pelo usuário.
-    '''
   return fig4
   
 #---------------------------------------------------------------------------------------------------------
-#
+
+# Colocando a 'app' pra rodar no Dash
 if __name__ == '__main__':
     app.run_server(debug=True)
