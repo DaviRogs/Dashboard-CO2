@@ -53,7 +53,6 @@ while ano_fim != ano_come:
                 nivel_ordenado.append(linha[3])
     ano_come += 1
 
-anos = sorted(anos)
 
 fig2 = px.choropleth(
     locations=codigo_ordenado, #Posição do país no mapa
@@ -81,7 +80,7 @@ emissoes =	{
 for linha in df_array:
   for emissao in emissoes:
     if linha[0] == emissao: # continente sendo lido no momento no df == 'key' do dicionário.
-      if 1987 <= linha[2]: # Não queremos todos os anos, filtramos ele.
+      if linha[2] >= 1987: # Não queremos todos os anos, filtramos ele.
         emissoes[emissao].append(linha[3])
 
 Anos = list(range(1987,2021))
@@ -93,8 +92,8 @@ continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'Am
 #Grafico3
 
 fig3 = px.bar(
-    x=anos, 
-    y=anos)
+    x=Anos, 
+    y=Anos)
 
 #----------------------------
 #Grafico4
@@ -163,16 +162,16 @@ app.layout = html.Main(id='graphs', className='container',
 
 # Função o G.Barras para processar o novo gráfico filtrado
 def atualizar_output(value): #Definindo uma função com o parâmetro value do input recebido de callback
-    if value == value:
 
-        for continent in continents:
-            for emissao in emissoes:
-                if continent == emissao:
-                    if value == continent:
-                        fig3 = px.bar(
-                            x = Anos,
-                            y = emissoes[continent]
-                        )
+
+    for continent in continents:
+        for emissao in emissoes:
+            if continent == emissao:
+                if value == continent:
+                    fig3 = px.bar(
+                        x = Anos,
+                        y = emissoes[continent]
+                    )
 
     fig3.update_layout(
     title="Emissão por continente",
@@ -190,15 +189,14 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
 
 # Função o G.Pizza para processar o novo gráfico filtrado
 def update_output(value):
-  ano_especifico = []
+    ano_especifico = []
 
-  if value == value:
     i = 0 
     while i < 34: # 33 anos entre 1987 à 2020
-      if value == Anos[i]:
-        posição = i # Marca a posição do ano que o usuário escolheu
-        break # Quebra do looping
-      i += 1 # i = i + 1
+        if value == Anos[i]:
+            posição = i # Marca a posição do ano que o usuário escolheu
+            break # Quebra do looping
+        i += 1 # i = i + 1
 
     for continente in emissoes:
       # ↓↓↓ Acrescentando somente os dados de emissão, de cada continente, no índice/posição do ano específico
@@ -209,7 +207,7 @@ def update_output(value):
     values= ano_especifico
     )
 
-  return fig4
+    return fig4
   
 #---------------------------------------------------------------------------------------------------------
 
