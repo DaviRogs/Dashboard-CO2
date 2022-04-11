@@ -20,7 +20,12 @@ for linha in df_array:
     if linha[0] == "World":
         world.append(linha[3])
 
-anos = list(range(1750,2021))
+anos = []
+
+for linha in df_array:
+    anos.append(linha[2])
+
+anos = sorted(set(anos))
 
 fig1 = px.line(
     x=anos,
@@ -37,28 +42,25 @@ fig1.update_layout(
 #Grafico2
 
 # Acrescentando os dados para por no gráfico de mapa
-anos = []
+anos_ordenados = []
 paises_ordenados = []
 nivel_ordenado = []
 codigo_ordenado = []
-ano_come = 1750
-ano_fim = 2021
-while ano_fim != ano_come:
+
+for ano in anos:
     for linha in df_array:
-        if linha[2] == ano_come:
+        if linha[2] == ano:
             if (linha[0] != 'Africa') and (linha[0] != 'Asia') and (linha[0] != 'Europe') and (linha[0] != 'North America') and (linha[0] != 'Oceania') and (linha[0] != 'South America') and (linha[0] != 'World'):
                 paises_ordenados.append(linha[0])
                 codigo_ordenado.append(linha[1])
-                anos.append(linha[2])
+                anos_ordenados.append(linha[2])
                 nivel_ordenado.append(linha[3])
-    ano_come += 1
-
 
 fig2 = px.choropleth(
     locations=codigo_ordenado, #Posição do país no mapa
     color=nivel_ordenado, #Nível de CO2
     hover_name=paises_ordenados, #Nome do país ao deixar o mouse encima
-    animation_frame=anos, #Régua
+    animation_frame=anos_ordenados, #Régua
     range_color=[0,2000000000], #Intervalo de CO2
     color_continuous_scale=px.colors.sequential.Reds #Variação de cor
 )
@@ -76,14 +78,22 @@ emissoes =	{
   'South America': [],
 }
 
+anos = []
+
+for linha in df_array:
+    if linha[2] >= 1987:
+        anos.append(linha[2])
+
+anos = sorted(set(anos))
+
 # Adicionando os dados de emissão para cada lista de continentes do dicionário
 for linha in df_array:
-  for emissao in emissoes:
-    if linha[0] == emissao: # continente sendo lido no momento no df == 'key' do dicionário.
-      if linha[2] >= 1987: # Não queremos todos os anos, filtramos ele.
-        emissoes[emissao].append(linha[3])
+    for ano in anos:
+        for emissao in emissoes:
+            if linha[0] == emissao: # continente sendo lido no momento no df == 'key' do dicionário.
+                if linha[2] == ano: # Não queremos todos os anos, filtramos ele.
+                    emissoes[emissao].append(linha[3])
 
-Anos = list(range(1987,2021))
 
 continents = ['Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America'] #Original do CSV
 continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'América do Sul'] # Traduzido
@@ -92,15 +102,15 @@ continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'Am
 #Grafico3
 
 fig3 = px.bar(
-    x=Anos, 
-    y=emissoes)
+    x=anos, 
+    y=anos)
 
 #----------------------------
 #Grafico4
 
 fig4 = px.pie(
   names= continentes,
-  values= emissoes)
+  values= continentes)
 
 #---------------------------------------------------------------------------------------------------------
 #HTML - Esqueleto da página Dash
@@ -138,7 +148,7 @@ app.layout = html.Main(id='graphs', className='container',
                         ),
                         html.Div(className='grafico_4',
                             children = [
-                                dcc.Dropdown(Anos, value=1987, id='Anos'),
+                                dcc.Dropdown(anos, value=1987, id='Anos'),
                                 dcc.Graph(
                                     id='Grafico_Pizza_CO2',
                                     figure=fig4
@@ -169,7 +179,7 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
             if continent == emissao:
                 if value == continent:
                     fig3 = px.bar(
-                        x = Anos,
+                        x = anos,
                         y = emissoes[continent]
                     )
 
@@ -193,7 +203,7 @@ def update_output(value):
 
     i = 0 
     while i < 34: # 33 anos entre 1987 à 2020
-        if value == Anos[i]:
+        if value == anos[i]:
             posição = i # Marca a posição do ano que o usuário escolheu
             break # Quebra do looping
         i += 1 # i = i + 1
