@@ -93,14 +93,14 @@ continentes = ['África', 'Ásia', 'Europa', 'América do Norte', 'Oceania', 'Am
 
 fig3 = px.bar(
     x=Anos, 
-    y=Anos)
+    y=emissoes)
 
 #----------------------------
 #Grafico4
 
 fig4 = px.pie(
   names= continentes,
-  values= continentes)
+  values= emissoes)
 
 #---------------------------------------------------------------------------------------------------------
 #HTML - Esqueleto da página Dash
