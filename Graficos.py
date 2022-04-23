@@ -59,7 +59,7 @@ fig2 = px.choropleth(
     hover_name=paises_ordenados, #Nome do país ao deixar o mouse encima
     animation_frame=anos_ordenados, #Régua
     range_color=[0,2000000000], #Intervalo de CO2
-    color_continuous_scale=px.colors.sequential.Reds #Variação de cor
+    color_continuous_scale=px.colors.sequential.Blues #Variação de cor
 )
 
 #---------------------------------------------------------------------------------------------------------
@@ -119,21 +119,21 @@ app.layout = html.Main(id='graphs', className='container',
                 html.Div(className="ancoras",
                     children=[ 
                         html.A(children=[
-                            html.Img(src='./assets/grafico-de-linha.gif', id='linhaGif'),
-                            html.Img(src='./assets/grafico-de-linha.png', id='linhaPng')
+                            html.Img(src='./assets/grafico-de-linha.png', id='linhaPng'),
+                            html.Img(src='./assets/grafico-de-linha.gif', id='linhaGif')
                         ],
                             href="#grafico1"),
                         html.A(children=[
-                            html.Img(src='./assets/grafico-mapa.gif', id='mapaGif'),
-                            html.Img(src='./assets/grafico-mapa.png', id='mapaPng')
+                            html.Img(src='./assets/grafico-mapa.png', id='mapaPng'),
+                            html.Img(src='./assets/grafico-mapa.gif', id='mapaGif')
                         ], href="#grafico2"),
                         html.A(children=[
-                            html.Img(src='./assets/grafico-de-barras.gif', id='barraGif'),
-                            html.Img(src='./assets/grafico-de-barras.png', id='barraPng')
+                            html.Img(src='./assets/grafico-de-barras.png', id='barraPng'),
+                            html.Img(src='./assets/grafico-de-barras.gif', id='barraGif')
                         ], href="#grafico3"),
                         html.A(children=[
-                            html.Img(src='./assets/grafico-de-pizza.gif', id='pizzaGif'),
-                            html.Img(src='./assets/grafico-de-pizza.png', id='pizzaPng')
+                            html.Img(src='./assets/grafico-de-pizza.png', id='pizzaPng'),
+                            html.Img(src='./assets/grafico-de-pizza.gif', id='pizzaGif')
                         ], href="#grafico4")
                     ]
                 )

@@ -38,33 +38,48 @@
     z-index: 4;
     width: 100%;
 }
-
-#linhaPng, #barraPng, #mapaPng, #pizzaPng{
-    margin-right: 5px;
-    position: absolute;
+#linhaPng, #linhaGif{
+    display: flex;
     height: 40px;
     width: auto;
     border-radius: 5px;
-    z-index: 1;
-    opacity: ;
+}
+
+#mapaPng, #mapaGif{
+    display: flex;
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
+}
+
+#barraPng, #barraGif{
+    display: flex;
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
+}
+
+#pizzaPng, #pizzaGif{
+    display: flex;
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
+}
+
+#linhaPng, #barraPng, #mapaPng, #pizzaPng{
     cursor: pointer;
+    transition: 2s;
 }
 
 #linhaGif, #barraGif, #mapaGif, #pizzaGif{
-    margin-right: 5px;
-    height: 40px;
     position: absolute;
-    width: auto;
-    border-radius: 5px;
     cursor: pointer;
+    opacity: 0;
+    transition: 1s;
 }
 
-#linhaGif:hover, #barraGif:hover, #mapaGif:hover, #pizzaGif:hover{
-    margin-right: 5px;
-    height: 40px;
-    width: auto;
-    border-radius: 5px;
-    cursor: pointer;
+#barraGif:hover, #mapaGif:hover, #pizzaGif:hover, #linhaGif:hover{
+    opacity: 1;
 }
 
 
