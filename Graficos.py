@@ -109,30 +109,64 @@ fig4 = px.pie(
 
 #---------------------------------------------------------------------------------------------------------
 #HTML - Esqueleto da página Dash
-
+graficos = ['grafico1', 'grafico2', 'grafico3', 'grafico4']
 app.layout = html.Main(id='graphs', className='container',
     children = [
-        html.Div(
+        html.Div(className="menu",
             children= [
                 html.Img(id='logo',
-                    src='assets\Logo.jpg')
-                ]
-            ),
+                    src='assets\Logo.jpg'),
+                html.Div(className="ancoras",
+                    children=[ 
+                        html.A(children=[
+                            html.Img(src='./assets/grafico-de-linha.gif', id='linhaGif'),
+                            html.Img(src='./assets/grafico-de-linha.png', id='linhaPng')
+                        ],
+                            href="#grafico1"),
+                        html.A(children=[
+                            html.Img(src='./assets/grafico-mapa.gif', id='mapaGif'),
+                            html.Img(src='./assets/grafico-mapa.png', id='mapaPng')
+                        ], href="#grafico2"),
+                        html.A(children=[
+                            html.Img(src='./assets/grafico-de-barras.gif', id='barraGif'),
+                            html.Img(src='./assets/grafico-de-barras.png', id='barraPng')
+                        ], href="#grafico3"),
+                        html.A(children=[
+                            html.Img(src='./assets/grafico-de-pizza.gif', id='pizzaGif'),
+                            html.Img(src='./assets/grafico-de-pizza.png', id='pizzaPng')
+                        ], href="#grafico4")
+                    ]
+                )
+            ]
+        ),
         html.Div(className='graficos',
             children=[
-                html.Div(className='grafico_1',
+                html.Div(className='capa',
+                children=[
+                    html.H1(id='texto1',
+                        children=[
+                            "Emissão",
+                            html.Br(),
+                            "global de",
+                            html.Br(),
+                            "CO2"
+                        ]
+                    )
+                ]),
+                html.Div(id="grafico1",className='grafico_1',
                             children = [
+                                html.H1('Teste'),
                                 dcc.Graph(
                                     className='g1',
                                     figure=fig1),
                             ]
                         ),
-                        html.Div(className='grafico_2',
+                        html.Div(id="grafico2",className='grafico_2',
                             children = [
                                 dcc.Graph(figure=fig2)
                             ]
                         ),
-                        html.Div(className='grafico_3',
+                        html.Div(id="grafico3",className='grafico_3',
                             children = [
                                 dcc.Dropdown(continents, value='Africa' , id='continentes'),
                                 dcc.Graph(
@@ -141,7 +175,7 @@ app.layout = html.Main(id='graphs', className='container',
                                 )
                             ]
                         ),
-                        html.Div(className='grafico_4',
+                        html.Div(id="grafico4",className='grafico_4',
                             children = [
                                 dcc.Dropdown(anos, value=1987, id='Anos'),
                                 dcc.Graph(
