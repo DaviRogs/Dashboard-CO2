@@ -14,16 +14,13 @@ df_array = df.values #Tranformando tudo o que estiver no df em uma lista para pa
 #Grafico1
 
 world = []
+anos = []
 
 # Colocando os dados do mundo na lista vazia
 for linha in df_array:
+    anos.append(linha[2])
     if linha[0] == "World":
         world.append(linha[3])
-
-anos = []
-
-for linha in df_array:
-    anos.append(linha[2])
 
 anos = sorted(set(anos))
 
@@ -80,14 +77,12 @@ emissoes =	{
 
 anos = []
 
+# Adicionando os dados de emissão para cada lista de continentes do dicionário
 for linha in df_array:
     if linha[2] >= 1987:
         anos.append(linha[2])
 
-anos = sorted(set(anos))
-
-# Adicionando os dados de emissão para cada lista de continentes do dicionário
-for linha in df_array:
+    anos = sorted(set(anos))
     for ano in anos:
         for emissao in emissoes:
             if linha[0] == emissao: # continente sendo lido no momento no df == 'key' do dicionário.
@@ -173,15 +168,12 @@ app.layout = html.Main(id='graphs', className='container',
 # Função o G.Barras para processar o novo gráfico filtrado
 def atualizar_output(value): #Definindo uma função com o parâmetro value do input recebido de callback
 
-
-    for continent in continents:
-        for emissao in emissoes:
-            if continent == emissao:
-                if value == continent:
-                    fig3 = px.bar(
-                        x = anos,
-                        y = emissoes[continent]
-                    )
+    for emissao in emissoes:
+            if value == emissao:
+                fig3 = px.bar(
+                    x = anos,
+                    y = emissoes[emissao]
+                )
 
     fig3.update_layout(
     title="Emissão por continente",
