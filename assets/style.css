@@ -17,13 +17,12 @@
 
 .menu{
     width: 100vw;
-    min-height: 8vh;
-    max-height: 11vh;
+    height: 11vh;
     align-items: center;
     padding-left: 1.3%;
     background-color: #46B8B0;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
 }
 
 .ancoras{
@@ -65,39 +64,64 @@
 
 .graficos {
     display: flex;
+    position: absolute;
     flex-wrap: wrap;
-    justify-content: center;
     width: 100%;
 }
 
 .capa{
+    display: flex;
     align-items: center;
     width: 100%;
-    height: 550px;
+    height: 80vh;
     background-color: #FFFFFF;
     margin-top: 6%;
-}
-
-.grafico_1{
-    display: flex;
-    width: 100%;
-    height: 550px;
-    background-color: #018586;
 }
 
 #texto1{
     font-family: Archive;
     font-size: 80px;
-    margin-top: 100px;
-    margin-right: 90px;
-    margin-left: 90px;
+    margin-top: -50px;
+    left: 230px;
+    position: relative;
     min-width: 440px;
+    z-index: 2;
+}
+
+#mundo{
+    max-height: 475px;
+    width: auto;
+    left: 450px;
+    float: right;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.grafico_1{
+    width: 100%;
+    height: 100%;
+    background-color: #36ADB9;
+}
+
+.grafico_1 #Grafico_Linhas_CO2{
+    width: 20%;
+    height: 100%;
+    background-color: #36ADB9;
+    min-width: 500px;
+    max-width: 50%;
+    margin: 10px;
+}
+
+#T_Grafico1{
+    float: right;
 }
 
 .grafico_2{
     width: 70%;
     height: 100%;
-    background-color: green;
+    background-color: #FFFFFF;
     border: 10px groove;
     min-width: 500px;
     max-width: 50%;
@@ -107,7 +131,7 @@
 .grafico_3{
     width: 70%;
     height: 100%;
-    background-color: white;
+    background-color: #02295B;
     border: 10px groove;
     min-width: 500px;
     max-width: 50%;

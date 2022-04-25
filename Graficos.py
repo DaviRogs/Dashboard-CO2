@@ -24,10 +24,7 @@ for linha in df_array:
 
 anos = sorted(set(anos))
 
-fig1 = px.line(
-    x=anos,
-    y=world
-)
+fig1 = px.line( x=anos, y=world, color_discrete_sequence=px.colors.sequential.Aggrnyl, template='gridon')
 
 fig1.update_layout(
     title="Emissão no mundo ao longo do tempo",
@@ -59,7 +56,7 @@ fig2 = px.choropleth(
     hover_name=paises_ordenados, #Nome do país ao deixar o mouse encima
     animation_frame=anos_ordenados, #Régua
     range_color=[0,2000000000], #Intervalo de CO2
-    color_continuous_scale=px.colors.sequential.Blues #Variação de cor
+    color_discrete_sequence=px.colors.sequential.Darkmint #Variação de cor    
 )
 
 #---------------------------------------------------------------------------------------------------------
@@ -109,7 +106,6 @@ fig4 = px.pie(
 
 #---------------------------------------------------------------------------------------------------------
 #HTML - Esqueleto da página Dash
-graficos = ['grafico1', 'grafico2', 'grafico3', 'grafico4']
 app.layout = html.Main(id='graphs', className='container',
     children = [
         html.Div(className="menu",
@@ -122,7 +118,7 @@ app.layout = html.Main(id='graphs', className='container',
                             html.Img(src='./assets/grafico-de-linha.png', id='linhaPng'),
                             html.Img(src='./assets/grafico-de-linha.gif', id='linhaGif')
                         ],
-                            href="#grafico1"),
+                            href="#Grafico_Linhas_CO2"),
                         html.A(className="map", children=[
                             html.Img(src='./assets/grafico-mapa.png', id='mapaPng'),
                             html.Img(src='./assets/grafico-mapa.gif', id='mapaGif')
@@ -150,37 +146,43 @@ app.layout = html.Main(id='graphs', className='container',
                             "global de",
                             html.Br(),
                             "CO2"
-                        ]
-                    )
+                        ]),
+                    html.Img(src='assets\mundo.png', id='mundo')
                 ]),
-                html.Div(id="grafico1",className='grafico_1',
-                            children = [
-                                html.H1('Teste'),
-                                dcc.Graph(
-                                    className='g1',
-                                    figure=fig1),
+                html.Div(className='grafico_1',
+                    children = [
+                        html.Div(id='Texto1', children=[
+                            html.H1('Teste', id="T_Grafico1"),
                             ]
                         ),
-                        html.Div(id="grafico2",className='grafico_2',
-                            children = [
-                                dcc.Graph(figure=fig2)
+                        html.Div(className='g1',
+                            children=[
+                                dcc.Graph(id='Grafico_Linhas_CO2',
+                                    figure=fig1)
                             ]
-                        ),
-                        html.Div(id="grafico3",className='grafico_3',
-                            children = [
-                                dcc.Dropdown(continents, value='Africa' , id='continentes'),
-                                dcc.Graph(
-                                    id='Grafico_Barras_CO2',
-                                    figure=fig3
-                                )
-                            ]
-                        ),
-                        html.Div(id="grafico4",className='grafico_4',
-                            children = [
-                                dcc.Dropdown(anos, value=1987, id='Anos'),
-                                dcc.Graph(
-                                    id='Grafico_Pizza_CO2',
-                                    figure=fig4
+                        )
+                    ]
+                ),
+                html.Div(id="grafico2",className='grafico_2',
+                    children = [
+                        dcc.Graph(figure=fig2)
+                    ]
+                ),
+                html.Div(id="grafico3",className='grafico_3',
+                    children = [
+                        dcc.Dropdown(continents, value='Africa' , id='continentes'),
+                        dcc.Graph(
+                            id='Grafico_Barras_CO2',
+                            figure=fig3
+                        )
+                    ]
+                ),
+                html.Div(id="grafico4",className='grafico_4',
+                    children = [
+                        dcc.Dropdown(anos, value=1987, id='Anos'),
+                        dcc.Graph(
+                            id='Grafico_Pizza_CO2',
+                            figure=fig4
                         )
                     ]
                 )
@@ -204,10 +206,7 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
 
     for emissao in emissoes:
             if value == emissao:
-                fig3 = px.bar(
-                    x = anos,
-                    y = emissoes[emissao]
-                )
+                fig3 = px.bar( x = anos, y = emissoes[emissao], color_discrete_sequence=px.colors.sequential.Aggrnyl, template='gridon')
 
     fig3.update_layout(
     title="Emissão por continente",
@@ -238,10 +237,7 @@ def update_output(value):
       # ↓↓↓ Acrescentando somente os dados de emissão, de cada continente, no índice/posição do ano específico
       ano_especifico.append(emissoes[continente][posição])
 
-    fig4 = px.pie(
-    names= continentes,
-    values= ano_especifico
-    )
+    fig4 = px.pie( names= continentes,values= ano_especifico, color_discrete_sequence=px.colors.sequential.Darkmint)
 
     return fig4
   
