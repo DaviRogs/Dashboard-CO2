@@ -118,22 +118,18 @@ app.layout = html.Main(id='graphs', className='container',
                     src='assets\Logo.jpg'),
                 html.Div(className="ancoras",
                     children=[ 
-                        html.A(children=[
-                            html.Img(src='./assets/grafico-de-linha.png', id='linhaPng'),
-                            html.Img(src='./assets/grafico-de-linha.gif', id='linhaGif')
+                        html.A(className="line", children=[
+                            html.Img(src='./assets/grafico-de-linha.png', id='linhaPng')
                         ],
                             href="#grafico1"),
-                        html.A(children=[
-                            html.Img(src='./assets/grafico-mapa.png', id='mapaPng'),
-                            html.Img(src='./assets/grafico-mapa.gif', id='mapaGif')
+                        html.A(className="map", children=[
+                            html.Img(src='./assets/grafico-mapa.png', id='mapaPng')
                         ], href="#grafico2"),
-                        html.A(children=[
-                            html.Img(src='./assets/grafico-de-barras.png', id='barraPng'),
-                            html.Img(src='./assets/grafico-de-barras.gif', id='barraGif')
+                        html.A(className="bar", children=[
+                            html.Img(src='./assets/grafico-de-barras.png', id='barraPng')
                         ], href="#grafico3"),
-                        html.A(children=[
-                            html.Img(src='./assets/grafico-de-pizza.png', id='pizzaPng'),
-                            html.Img(src='./assets/grafico-de-pizza.gif', id='pizzaGif')
+                        html.A(className="pie", children=[
+                            html.Img(src='./assets/grafico-de-pizza.png', id='pizzaPng')
                         ], href="#grafico4")
                     ]
                 )
