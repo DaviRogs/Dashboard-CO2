@@ -43,13 +43,24 @@
 }
 
 #linhaPng, #barraPng, #mapaPng, #pizzaPng{
-    height: 8vh;
+    height: 7vh;
+    position: absolute;
     width: auto;
     z-index: 2;
 }
 
+#linhaGif, #barraGif, #mapaGif, #pizzaGif{
+    height: 8vh;
+    position: absolute;
+    width: auto;
+    z-index: 2;
+    border-radius: 5px;
+    opacity: 0;
+}
+
 #barraGif:hover, #mapaGif:hover, #pizzaGif:hover, #linhaGif:hover{
     opacity: 1;
+    transition: 0.5s;
 }
 
 .graficos {
@@ -61,12 +72,10 @@
 
 .capa{
     align-items: center;
-    width: 100vh;
-    min-height: 50vh;
-    max-height: 75vh;
+    width: 100%;
+    height: 550px;
     background-color: #FFFFFF;
-    margin-top: 5%;
-
+    margin-top: 6%;
 }
 
 .grafico_1{
