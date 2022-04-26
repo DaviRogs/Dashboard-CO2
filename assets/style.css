@@ -87,6 +87,7 @@
 #mundo{
     top: 5.5vh;
     left: 25vw;
+    right: 18vw;
     height: 60vh;
     width: auto;
     float: right;
@@ -145,11 +146,13 @@
     margin: 10px
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1300px) {
     #texto1{
         font-family: Archive;
         font-size: 80px;
         z-index: 2;
+        position: relative;
+        left: 30vw;
     }
 
     #mundo{
