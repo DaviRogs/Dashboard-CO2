@@ -123,15 +123,15 @@ app.layout = html.Main(id='graphs', className='container',
                         html.A(className="map", children=[
                             html.Img(src='./assets/grafico-mapa.png', id='mapaPng'),
                             html.Img(src='./assets/grafico-mapa.gif', id='mapaGif')
-                        ], href="#grafico2"),
+                        ], href="#Grafico_mapa_CO2"),
                         html.A(className="bar", children=[
                             html.Img(src='./assets/grafico-de-barras.png', id='barraPng'),
                             html.Img(src='./assets/grafico-de-barras.gif', id='barraGif')
-                        ], href="#grafico3"),
+                        ], href="#Grafico_Barras_CO2"),
                         html.A(className="pie", children=[
                             html.Img(src='./assets/grafico-de-pizza.png', id='pizzaPng'),
                             html.Img(src='./assets/grafico-de-pizza.gif', id='pizzaGif')
-                        ], href="#grafico4")
+                        ], href="#Grafico_Pizza_CO2")
                     ]
                 )
             ]
@@ -164,26 +164,50 @@ app.layout = html.Main(id='graphs', className='container',
                         )
                     ]
                 ),
-                html.Div(id="grafico2",className='grafico_2',
+                html.Div(id="Grafico_mapa_CO2",className='grafico_2',
                     children = [
-                        dcc.Graph(figure=fig2)
+                        html.Div(id='Texto2', children=[
+                            html.H1('Teste2', id="T_Grafico2"),
+                            ]
+                        ),
+                        html.Div(className='g2',
+                            children=[
+                                dcc.Graph(figure=fig2)         
+                            ]
+                        )
                     ]
                 ),
-                html.Div(id="grafico3",className='grafico_3',
+                html.Div(className='grafico_3',
                     children = [
-                        dcc.Dropdown(continents, value='Africa' , id='continentes'),
-                        dcc.Graph(
-                            id='Grafico_Barras_CO2',
-                            figure=fig3
+                        html.Div(id='Texto3', children=[
+                            html.H1('Teste3', id="T_Grafico3"),
+                            ]
+                        ),
+                        html.Div(className='g3',
+                            children=[
+                                dcc.Dropdown(continents, value='Africa' , id='continentes'),
+                                dcc.Graph(
+                                    id='Grafico_Barras_CO2',
+                                    figure=fig3
+                                )
+                            ]
                         )
                     ]
                 ),
                 html.Div(id="grafico4",className='grafico_4',
                     children = [
-                        dcc.Dropdown(anos, value=1987, id='Anos'),
-                        dcc.Graph(
-                            id='Grafico_Pizza_CO2',
-                            figure=fig4
+                        html.Div(id='Texto4', children=[
+                            html.H1('Teste', id="T_Grafico4"),
+                            ]
+                        ),
+                        html.Div(className='g1',
+                            children=[
+                                dcc.Dropdown(anos, value=1987, id='Anos'),
+                                dcc.Graph(
+                                    id='Grafico_Pizza_CO2',
+                                    figure=fig4
+                                )
+                            ]
                         )
                     ]
                 )
