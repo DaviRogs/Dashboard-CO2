@@ -18,7 +18,6 @@
 .menu{
     width: 100vw;
     height: 11vh;
-    align-items: center;
     padding-left: 1.3%;
     background-color: #46B8B0;
     position: fixed;
@@ -72,26 +71,24 @@
 .capa{
     display: flex;
     align-items: center;
-    width: 100%;
     height: 80vh;
     background-color: #FFFFFF;
-    margin-top: 6%;
 }
 
 #texto1{
     font-family: Archive;
     font-size: 80px;
-    margin-top: -50px;
-    left: 230px;
     position: relative;
-    min-width: 440px;
     z-index: 2;
+    top: 5vh;
+    left: 18vw;
 }
 
 #mundo{
-    max-height: 475px;
+    top: 5.5vh;
+    left: 25vw;
+    height: 60vh;
     width: auto;
-    left: 450px;
     float: right;
     position: relative;
     z-index: 2;
@@ -146,4 +143,17 @@
     min-width: 500px;
     max-width: 50%;
     margin: 10px
+}
+
+@media only screen and (max-width: 1100px) {
+    #texto1{
+        font-family: Archive;
+        font-size: 80px;
+        z-index: 2;
+    }
+
+    #mundo{
+        height: 0vh;
+        width: auto;
+    }
 }
