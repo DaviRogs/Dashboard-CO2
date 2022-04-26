@@ -31,7 +31,7 @@
     justify-content: space-around;
     margin-left: 11vh;
     margin-right: 11vh;
-    top: -10vh;
+    top: -10.6vh;
     left: 1vw;
     border-radius: 5px;
 }
@@ -42,14 +42,14 @@
 }
 
 #linhaPng, #barraPng, #mapaPng, #pizzaPng{
-    height: 7vh;
+    height: 9vh;
     position: absolute;
     width: auto;
     z-index: 2;
 }
 
 #linhaGif, #barraGif, #mapaGif, #pizzaGif{
-    height: 8vh;
+    height: 9vh;
     position: absolute;
     width: auto;
     z-index: 2;
@@ -59,7 +59,7 @@
 
 #barraGif:hover, #mapaGif:hover, #pizzaGif:hover, #linhaGif:hover{
     opacity: 1;
-    transition: 0.5s;
+    transition: 0.1s;
 }
 
 .graficos {

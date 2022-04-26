@@ -56,7 +56,8 @@ fig2 = px.choropleth(
     hover_name=paises_ordenados, #Nome do país ao deixar o mouse encima
     animation_frame=anos_ordenados, #Régua
     range_color=[0,2000000000], #Intervalo de CO2
-    color_discrete_sequence=px.colors.sequential.Darkmint #Variação de cor    
+    color_continuous_scale=px.colors.sequential.Darkmint, #Variação de cor
+    
 )
 
 #---------------------------------------------------------------------------------------------------------
