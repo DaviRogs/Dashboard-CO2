@@ -30,6 +30,7 @@ fig1 = px.line(
     y=world,
     color_discrete_sequence=px.colors.sequential.Aggrnyl,
     template='gridon',
+    title="Emissão no mundo ao longo do tempo",
     labels={
         "y":"Emissão ",
         "x":"Ano "
@@ -41,7 +42,11 @@ fig1.update_layout(
     xaxis_title="Anos",
     yaxis_title="Emissão por tonelada",
     paper_bgcolor="rgba(255,255,255,0)",
-    plot_bgcolor="rgba(240,255,240, 0.5)"
+    plot_bgcolor="#DCEEF3",
+    title_font_family="Archive",
+    title_font_color="#031225",
+    font_color="#031225",
+    font_family="Archive"
     )
 
 #---------------------------------------------------------------------------------------------------------
@@ -77,7 +82,11 @@ fig2 = px.choropleth(
 )
 
 fig2.update_layout(
-    paper_bgcolor="rgba(255,255,255,0)",
+    title_font_family="Archive",
+    title_font_color="#031225",
+    font_color="#031225",
+    font_family="Archive",
+    paper_bgcolor="#DCEEF3"
 )
 
 #---------------------------------------------------------------------------------------------------------
@@ -255,6 +264,7 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
                     x = anos,
                     y = emissoes[emissao],
                     color_discrete_sequence=px.colors.sequential.Aggrnyl,
+                    title = 'Emissão por continente',
                     template='gridon',
                     labels={
                         "x":"Ano ",
@@ -267,7 +277,11 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
     xaxis_title="Anos",
     yaxis_title="Emissão por tonelada",
     paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(240,255,240,0.5)"
+    plot_bgcolor="#DCEEF3",
+    title_font_family="Archive",
+    title_font_color="#031225",
+    font_color="#031225",
+    font_family="Archive"
     )
 
     return fig3
@@ -296,6 +310,8 @@ def update_output(value):
     fig4 = px.pie(
         names= continentes,
         values= ano_especifico,
+        template= 'simple_white',
+        title= "Emissão por continente",
         color_discrete_sequence=px.colors.sequential.Darkmint,
         labels={
             "names":"Continente ",
@@ -305,7 +321,11 @@ def update_output(value):
 
     fig4.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)"
+        plot_bgcolor="rgba(0,0,0,0)",
+        title_font_family="Archive",
+        title_font_color="#031225",
+        font_color="#031225",
+        font_family="Archive",
     )
 
     return fig4
