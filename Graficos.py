@@ -1,6 +1,5 @@
 #Importação das bibliotecas
 
-from tkinter import Y
 from pandas import read_csv
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
@@ -239,9 +238,43 @@ app.layout = html.Main(id='graphs', className='container',
                             ]
                         )
                     ]
+                ),
+                html.Div(className='baseboard',
+                    children=[
+                        html.Div(className='participantes',
+                            children=[
+                                html.H1('Participantes', id='participantes'),
+                                html.H2(id='conteudo_participantes',
+                                    children=[
+                                        ('Alana Gabriele Amorim Silva - 211061331'), html.Br(),
+                                        ('Danielle Rodrigues Silva - 211061574'), html.Br(),
+                                        ('Dara Cristina Fernandes - 211061609'), html.Br(),
+                                        ('Davi Rodrigues da Rocha - 211061618'), html.Br(),
+                                        ('Harleny Angéllica Araújo - 211061832'), html.Br(),
+                                        ('Helena Emery Silvano - 211061841'), html.Br(),
+                                        ('Leandro Almeida Rocha - 211062080'), html.Br(),
+                                        ('Rafaela de Melo Lopes - 211062400'), html.Br(),
+                                        ('Thaiza R da Silva - 211062508')
+                                    ]
+                                )
+                            ]
+                        ),
+                        html.Div(className='fonte',
+                            children=[
+                                html.H1('Dados Usados', id='referencia'),
+                                html.H2('Dados fornecidos pela Our World in Data  sobre a emissão anual de co2 por país', id='fonte')
+                            ]
+                        ),
+                        html.Div(className='imagens',
+                            children=[
+                                html.Img(src='./assets/logo-unb.png', id='unb'),
+                                html.Img(src='./assets/logo-fga.png', id='fga')
+                            ]
+                        )
+                    ]
                 )
             ]
-        ),
+        )
     ]
 )        
 

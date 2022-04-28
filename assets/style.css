@@ -3,6 +3,11 @@
     src: url('fonts/Archive.otf');
 }
 
+@font-face {
+    font-family: 'IBM Plex Sans'; 
+    src: url('fonts/IBMPlexSans-ExtraLight.ttf');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -172,6 +177,49 @@
 
 #Texto4{
     float: left;
+}
+
+.baseboard{
+    background-color: #204857;
+    display: flex;
+    height: 50vh;
+    width: 100vw;
+    justify-content: space-around;
+    padding-top: 2%;
+}
+
+#participantes{
+    font-family: Archive;
+    color: #FFFFFF;
+    font-size: 28px;
+}
+
+#conteudo_participantes{
+    font-family: IBM Plex Sans;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+#referencia{
+    font-family: Archive;
+    color: #FFFFFF;
+    font-size: 28px;
+}
+
+#fonte{
+    font-family: IBM Plex Sans;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+#unb{
+    max-height: 11vh;
+    width: auto;
+}
+
+#fga{
+    max-height: 9.5vh;
+    width: auto;
 }
 
 @media only screen and (max-width: 1300px) {
