@@ -1,5 +1,6 @@
 #Importação das bibliotecas
 
+from tkinter import Y
 from pandas import read_csv
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
@@ -24,12 +25,23 @@ for linha in df_array:
 
 anos = sorted(set(anos))
 
-fig1 = px.line( x=anos, y=world, color_discrete_sequence=px.colors.sequential.Aggrnyl, template='gridon')
+fig1 = px.line(
+    x=anos,
+    y=world,
+    color_discrete_sequence=px.colors.sequential.Aggrnyl,
+    template='gridon',
+    labels={
+        "y":"Emissão ",
+        "x":"Ano "
+    }
+)
 
 fig1.update_layout(
     title="Emissão no mundo ao longo do tempo",
     xaxis_title="Anos",
-    yaxis_title="Emissão",
+    yaxis_title="Emissão por tonelada",
+    paper_bgcolor="rgba(255,255,255,0)",
+    plot_bgcolor="rgba(220,238,243, 0.8)"
     )
 
 #---------------------------------------------------------------------------------------------------------
@@ -57,7 +69,11 @@ fig2 = px.choropleth(
     animation_frame=anos_ordenados, #Régua
     range_color=[0,2000000000], #Intervalo de CO2
     color_continuous_scale=px.colors.sequential.Darkmint, #Variação de cor
-    
+    labels={
+        "animation_frame":"Ano ",
+        "color":"Emissão",
+        "locations":"Código "
+    }
 )
 
 #---------------------------------------------------------------------------------------------------------
@@ -212,7 +228,7 @@ app.layout = html.Main(id='graphs', className='container',
                     ]
                 )
             ]
-        )
+        ),
     ]
 )        
 
@@ -231,12 +247,21 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
 
     for emissao in emissoes:
             if value == emissao:
-                fig3 = px.bar( x = anos, y = emissoes[emissao], color_discrete_sequence=px.colors.sequential.Aggrnyl, template='gridon')
+                fig3 = px.bar(
+                    x = anos,
+                    y = emissoes[emissao],
+                    color_discrete_sequence=px.colors.sequential.Aggrnyl,
+                    template='gridon',
+                    labels={
+                        "x":"Ano ",
+                        "y":"Emissão ",
+                    }
+                )
 
     fig3.update_layout(
     title="Emissão por continente",
     xaxis_title="Anos",
-    yaxis_title="Emissão",
+    yaxis_title="Emissão por tonelada",
     )
 
     return fig3
@@ -262,7 +287,15 @@ def update_output(value):
       # ↓↓↓ Acrescentando somente os dados de emissão, de cada continente, no índice/posição do ano específico
       ano_especifico.append(emissoes[continente][posição])
 
-    fig4 = px.pie( names= continentes,values= ano_especifico, color_discrete_sequence=px.colors.sequential.Darkmint)
+    fig4 = px.pie(
+        names= continentes,
+        values= ano_especifico,
+        color_discrete_sequence=px.colors.sequential.Darkmint,
+        labels={
+            "names":"Continente ",
+            "values":"Emissão "
+        }
+    )
 
     return fig4
   
