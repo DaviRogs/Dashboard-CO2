@@ -41,7 +41,7 @@ fig1.update_layout(
     xaxis_title="Anos",
     yaxis_title="Emissão por tonelada",
     paper_bgcolor="rgba(255,255,255,0)",
-    plot_bgcolor="rgba(220,238,243, 0.8)"
+    plot_bgcolor="rgba(240,255,240, 0.5)"
     )
 
 #---------------------------------------------------------------------------------------------------------
@@ -74,6 +74,10 @@ fig2 = px.choropleth(
         "color":"Emissão",
         "locations":"Código "
     }
+)
+
+fig2.update_layout(
+    paper_bgcolor="rgba(255,255,255,0)",
 )
 
 #---------------------------------------------------------------------------------------------------------
@@ -135,7 +139,7 @@ app.layout = html.Main(id='graphs', className='container',
                             html.Img(src='./assets/grafico-de-linha.png', id='linhaPng'),
                             html.Img(src='./assets/grafico-de-linha.gif', id='linhaGif')
                         ],
-                            href="#Grafico_Linhas_CO2"),
+                            href="#grafic1"),
                         html.A(className="map", children=[
                             html.Img(src='./assets/grafico-mapa.png', id='mapaPng'),
                             html.Img(src='./assets/grafico-mapa.gif', id='mapaGif')
@@ -166,7 +170,7 @@ app.layout = html.Main(id='graphs', className='container',
                         ]),
                     html.Img(src='assets\mundo.png', id='mundo')
                 ]),
-                html.Div(className='grafico_1',
+                html.Div(className='grafico_1',id='grafic1',
                     children = [
                         html.Div(id='Texto1', children=[
                             html.H1('Teste', id="T_Grafico1"),
@@ -188,7 +192,7 @@ app.layout = html.Main(id='graphs', className='container',
                         ),
                         html.Div(className='g2',
                             children=[
-                                dcc.Graph(figure=fig2)         
+                                dcc.Graph(id="Grafico-Mapa", figure=fig2)         
                             ]
                         )
                     ]
@@ -262,6 +266,8 @@ def atualizar_output(value): #Definindo uma função com o parâmetro value do i
     title="Emissão por continente",
     xaxis_title="Anos",
     yaxis_title="Emissão por tonelada",
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(240,255,240,0.5)"
     )
 
     return fig3
@@ -295,6 +301,11 @@ def update_output(value):
             "names":"Continente ",
             "values":"Emissão "
         }
+    )
+
+    fig4.update_layout(
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)"
     )
 
     return fig4
