@@ -72,10 +72,10 @@ fig2 = px.choropleth(
     hover_name=paises_ordenados, #Nome do país ao deixar o mouse encima
     animation_frame=anos_ordenados, #Régua
     range_color=[0,2000000000], #Intervalo de CO2
-    color_continuous_scale=px.colors.sequential.Darkmint, #Variação de cor
+    color_continuous_scale=px.colors.sequential.Mint, #Variação de cor
     labels={
         "animation_frame":"Ano ",
-        "color":"Emissão",
+        "color":"Emissão ",
         "locations":"Código "
     }
 )
@@ -170,12 +170,9 @@ app.layout = html.Main(id='graphs', className='container',
                 children=[
                     html.H1(id='texto1',
                         children=[
-                            "Emissão",
-                            html.Br(),
-                            "global de",
-                            html.Br(),
-                            "CO2"
-                        ]),
+                            "Emissão", html.Br(), "global de", html.Br(), "CO2"
+                        ]
+                    ),
                     html.Img(src='assets\mundo.png', id='mundo')
                 ]),
                 html.Div(className='grafico_1',id='grafic1',

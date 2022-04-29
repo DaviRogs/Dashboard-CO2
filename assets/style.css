@@ -78,25 +78,24 @@
     display: flex;
     align-items: center;
     height: 80vh;
+    width: 100%;
+    margin-top: 55px;
+    margin-left: 200px;
+    margin-right: 200px;
+    position: relative;
+    justify-content: space-around;
 }
 
 #texto1{
     font-family: Archive;
     font-size: 80px;
-    position: relative;
     z-index: 2;
-    top: 5vh;
-    left: 18vw;
 }
 
 #mundo{
-    top: 5.5vh;
-    left: 25vw;
-    right: 18vw;
-    height: 60vh;
+    height: 55vh;
     width: auto;
     float: right;
-    position: relative;
     z-index: 2;
 }
 
@@ -155,6 +154,10 @@
     margin: 10px;
 }
 
+#continentes{
+    font-family: IBM Plex Sans;
+}
+
 #Texto3{
     float: right;
 }
@@ -175,6 +178,10 @@
     
 }
 
+#Anos{
+    font-family: IBM Plex Sans;
+}
+
 #Texto4{
     float: left;
 }
@@ -182,6 +189,7 @@
 .baseboard{
     background-color: #204857;
     display: flex;
+    height: auto;
     width: 100vw;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -189,12 +197,11 @@
     padding-top: 2%;
     padding-bottom: 2%;
     align-items: center;
-
 }
 
 .participantes{
-    padding-top: 20px;
-    padding-left: 50px;
+    margin-left: 200px;
+    margin-top: 40px;
     min-width: 300px;
     min-height: 210px;
     max-width: 380px;
@@ -218,8 +225,8 @@
     min-height: 100px;
     max-width: 350px;
     max-height: 100px;
-    margin-top: 20px;
-    padding-left: 20px;
+    margin-top: 25px;
+    margin-right: 200px;
 }
 
 #referencia{
@@ -261,16 +268,27 @@
 }
 
 @media only screen and (max-width: 1300px) {
+    .capa{
+        justify-content: center;
+    }
+
     #texto1{
         font-family: Archive;
         font-size: 80px;
         z-index: 2;
-        position: relative;
-        left: 30vw;
+        justify-content: center;
     }
 
     #mundo{
         height: 0vh;
         width: auto;
+    }
+
+    .participantes{
+        margin-left: 25px;
+    }
+
+    .fonte{
+        margin-right: 0px;
     }
 }
