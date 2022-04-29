@@ -182,10 +182,23 @@
 .baseboard{
     background-color: #204857;
     display: flex;
-    height: 50vh;
     width: 100vw;
     justify-content: space-around;
+    flex-wrap: wrap;
+    position: relative;
     padding-top: 2%;
+    padding-bottom: 2%;
+    align-items: center;
+
+}
+
+.participantes{
+    padding-top: 20px;
+    padding-left: 50px;
+    min-width: 300px;
+    min-height: 210px;
+    max-width: 380px;
+    max-height: 210px;
 }
 
 #participantes{
@@ -200,6 +213,15 @@
     font-size: 15px;
 }
 
+.fonte{
+    min-width: 250px;
+    min-height: 100px;
+    max-width: 350px;
+    max-height: 100px;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
 #referencia{
     font-family: Archive;
     color: #FFFFFF;
@@ -212,13 +234,29 @@
     font-size: 15px;
 }
 
+#link{
+    text-decoration: underline;
+    font-family: IBM Plex Sans;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+.imagens{
+    top: 20vh;
+    margin-left: 87vw;
+    margin-right: 13vw;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+}
+
 #unb{
     max-height: 11vh;
     width: auto;
 }
 
 #fga{
-    max-height: 9.5vh;
+    max-height: 12.5vh;
     width: auto;
 }
 

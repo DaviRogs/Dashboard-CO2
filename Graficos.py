@@ -243,7 +243,7 @@ app.layout = html.Main(id='graphs', className='container',
                     children=[
                         html.Div(className='participantes',
                             children=[
-                                html.H1('Participantes', id='participantes'),
+                                html.H1('Participantes - Grupo 02', id='participantes'),
                                 html.H2(id='conteudo_participantes',
                                     children=[
                                         ('Alana Gabriele Amorim Silva - 211061331'), html.Br(),
@@ -262,7 +262,8 @@ app.layout = html.Main(id='graphs', className='container',
                         html.Div(className='fonte',
                             children=[
                                 html.H1('Dados Usados', id='referencia'),
-                                html.H2('Dados fornecidos pela Our World in Data  sobre a emissão anual de co2 por país', id='fonte')
+                                html.H2(children=[
+                                    ('Dados fornecidos pela '), html.A('Our World in Data', href='https://ourworldindata.org/co2-emissions', id='link'), (' sobre a emissão anual de CO2 por país.')], id='fonte')
                             ]
                         ),
                         html.Div(className='imagens',
