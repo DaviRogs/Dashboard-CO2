@@ -100,29 +100,46 @@
 }
 
 .grafico_1{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
     background-color: #46B8B0;
-    
-}
-
-
-.grafico_1 #Grafico_Linhas_CO2{
-    width: 50%;
-    height: 100%;
-    background-color:rgba(54,173,185,0);
-    min-width: 500px;
-    max-width: 50%;
-    margin: 10px;
+    position: relative;
 }
 
 #T_Grafico1{
+    margin-top: 15px;
+    text-align: center;
+    font-family: Archive;
+}
+
+#T1{
     float: right;
+    font-family: IBM Plex Sans;
+    text-align: justify;
+    font-size: 20px;
+    margin-top: 25px;
+    margin-right: 150px;
+    width: 550px;
+    margin-bottom: 35px;
+}
+
+.grafico_1 #Grafico_Linhas_CO2{
+    margin-left: 200px;
+    width: 40%;
+    background-color:rgba(54,173,185,0);
+    min-width: 500px;
+    max-width: 50%;
+    margin-left: 150px;
 }
 
 .grafico_2{
         width: 100%;
         height: 100%;
+}
+
+#T_Grafico2{
+    margin-top: 15px;
+    text-align: center;
+    font-family: Archive;
 }
 
 .grafico_2 #Grafico-Mapa{
@@ -135,14 +152,16 @@
     float: right;
 }
 
-#Texto2{
-    float: left;
-}
-
 .grafico_3{
     width: 100%;
     height: 100%;
     background-color: #46B8B0;
+}
+
+#T_Grafico3{
+    margin-top: 15px;
+    text-align: center;
+    font-family: Archive;
 }
 
 .grafico_3 #Grafico_Barras_CO2, #continentes{
@@ -158,13 +177,15 @@
     font-family: IBM Plex Sans;
 }
 
-#Texto3{
-    float: right;
-}
-
 .grafico_4{
     width: 100%;
     height: 100%;
+}
+
+#T_Grafico4{
+    margin-top: 15px;
+    text-align: center;
+    font-family: Archive;
 }
 
 .grafico_4 #Grafico_Pizza_CO2, #Anos{
@@ -180,10 +201,6 @@
 
 #Anos{
     font-family: IBM Plex Sans;
-}
-
-#Texto4{
-    float: left;
 }
 
 .baseboard{
@@ -290,5 +307,31 @@
 
     .fonte{
         margin-right: 0px;
+    }
+
+    .grafico_1{
+        width: 100vw;
+        background-color: #46B8B0;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #T1{
+        font-family: IBM Plex Sans;
+        text-align: justify;
+        font-size: 20px;
+        margin-top: 30px;
+        margin-left: 150px;
+        margin-bottom: 40px;
+        width: 500px;
+    }
+    
+    .grafico_1 #Grafico_Linhas_CO2{
+        width: 100vw;
+        margin-left: 40vw;
+        margin-right: 18vw;
+        background-color:rgba(54,173,185,0);
     }
 }

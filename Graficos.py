@@ -177,8 +177,13 @@ app.layout = html.Main(id='graphs', className='container',
                 ]),
                 html.Div(className='grafico_1',id='grafic1',
                     children = [
-                        html.Div(id='Texto1', children=[
-                            html.H1('Teste', id="T_Grafico1"),
+                        html.Div(className='T1', children=[
+                            html.H1('Gráfico de Linha', id="T_Grafico1"),
+                            html.H2(
+                                children=[
+                                    ('Como as emissões de CO2 mudaram ao longo do tempo?'), html.Br(), html.Br(), ('Pode-se notar o crescimento global da emissão por tonelada de CO2 em relação ao tempo, tendo início em 1750 e possuindo dados até 2021.'), html.Br(), html.Br(), ('Por meio deste gráfico, é possível observar uma emissão quase nula nos primeiros cem anos, seguida de uma alta a partir do século XX, momento no qual a humanidade começou processos maiores de industrialização.'), html.Br(), html.Br(), ('Ao final do século XX, já havia atingido 22 bilhões de toneladas, com o gráfico ainda tendendo a crescer.'), html.Br(), html.Br(), ('Nos últimos anos, a emissão de CO2 está próxima das 35 bilhões de toneladas. Vê-se que o crescimento se estabilizou no final do gráfico, porém ainda não atingiu o nível máximo.')
+                                ], id='T1'
+                            )
                             ]
                         ),
                         html.Div(className='g1',
@@ -192,8 +197,13 @@ app.layout = html.Main(id='graphs', className='container',
                 html.Div(id="Grafico_mapa_CO2",className='grafico_2',
                     children = [
                         html.Div(id='Texto2', children=[
-                            html.H1('Teste2', id="T_Grafico2"),
-                            ]
+                            html.H1('Gráfico de Mapa', id="T_Grafico2"),
+                            html.H2(
+                                children=[
+
+                                ]
+                            )
+                        ]
                         ),
                         html.Div(className='g2',
                             children=[
@@ -205,7 +215,7 @@ app.layout = html.Main(id='graphs', className='container',
                 html.Div(className='grafico_3',
                     children = [
                         html.Div(id='Texto3', children=[
-                            html.H1('Teste3', id="T_Grafico3"),
+                            html.H1('Gráfico de Barras', id="T_Grafico3"),
                             ]
                         ),
                         html.Div(className='g3',
@@ -222,7 +232,7 @@ app.layout = html.Main(id='graphs', className='container',
                 html.Div(id="grafico4",className='grafico_4',
                     children = [
                         html.Div(id='Texto4', children=[
-                            html.H1('Teste', id="T_Grafico4"),
+                            html.H1('Gráfico de Pizza', id="T_Grafico4"),
                             ]
                         ),
                         html.Div(className='g1',
