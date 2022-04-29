@@ -132,8 +132,9 @@
 }
 
 .grafico_2{
-        width: 100%;
-        height: 100%;
+    width: 100vw;
+    height: auto;
+    position: relative;
 }
 
 #T_Grafico2{
@@ -142,14 +143,23 @@
     font-family: Archive;
 }
 
+#T2{
+    position: absolute;
+    font-family: IBM Plex Sans;
+    text-align: justify;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 180px;
+    width: 480px;
+}
+
 .grafico_2 #Grafico-Mapa{
-    width: 50%;
-    height: 100%;
-    background-color:rgba(54,173,185,0);
-    min-width: 500px;
-    max-width: 50%;
-    margin: 10px;
     float: right;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    width: 40%;
+    max-width: 50%;
+    background-color:rgba(54,173,185,0);
 }
 
 .grafico_3{
@@ -334,4 +344,32 @@
         margin-right: 18vw;
         background-color:rgba(54,173,185,0);
     }
+
+    .grafico_2{
+        width: 100vw;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #T_Grafico2{
+        margin-top: 15px;
+        text-align: center;
+        font-family: Archive;
+    }
+    
+    #T2{
+        font-family: IBM Plex Sans;
+        text-align: justify;
+        font-size: 20px;
+        width: 480px;
+    }
+    
+    .grafico_2 #Grafico-Mapa{
+        width: 40%;
+        max-width: 50%;
+        background-color:rgba(54,173,185,0);
+    }
+    
 }
