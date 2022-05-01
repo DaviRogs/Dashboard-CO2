@@ -151,15 +151,15 @@ app.layout = html.Main(id='graphs', className='container',
                         html.A(className="map", children=[
                             html.Img(src='./assets/grafico-mapa.png', id='mapaPng'),
                             html.Img(src='./assets/grafico-mapa.gif', id='mapaGif')
-                        ], href="#Grafico_mapa_CO2"),
+                        ], href="#grafico_mapa_CO2"),
                         html.A(className="bar", children=[
                             html.Img(src='./assets/grafico-de-barras.png', id='barraPng'),
                             html.Img(src='./assets/grafico-de-barras.gif', id='barraGif')
-                        ], href="#Grafico_Barras_CO2"),
+                        ], href="#grafico_Barras_CO2"),
                         html.A(className="pie", children=[
                             html.Img(src='./assets/grafico-de-pizza.png', id='pizzaPng'),
                             html.Img(src='./assets/grafico-de-pizza.gif', id='pizzaGif')
-                        ], href="#Grafico_Pizza_CO2")
+                        ], href="#grafico_Pizza_CO2")
                     ]
                 )
             ]
@@ -173,9 +173,10 @@ app.layout = html.Main(id='graphs', className='container',
                             "Emissão", html.Br(), "global de", html.Br(), "CO2"
                         ]
                     ),
-                    html.Img(src='assets\mundo.png', id='mundo')
+                    html.Img(src='assets\mundo.png', id='mundo'),
+                    html.Div(id='grafic1')
                 ]),
-                html.Div(className='grafico_1',id='grafic1',
+                html.Div(className='grafico_1',
                     children = [
                         html.Div(className='T1', children=[
                             html.H1('Gráfico de Linha', id="T_Grafico1"),
@@ -191,10 +192,11 @@ app.layout = html.Main(id='graphs', className='container',
                                 dcc.Graph(id='Grafico_Linhas_CO2',
                                     figure=fig1)
                             ]
-                        )
+                        ),
+                        html.Div(id='grafico_mapa_CO2')
                     ]
                 ),
-                html.Div(id="Grafico_mapa_CO2",className='grafico_2',
+                html.Div(className='grafico_2',
                     children = [
                         html.Div(className='T2', children=[
                             html.H1('Gráfico de Mapa', id="T_Grafico2"),
@@ -209,35 +211,52 @@ app.layout = html.Main(id='graphs', className='container',
                             children=[
                                 dcc.Graph(id="Grafico-Mapa", figure=fig2)         
                             ]
-                        )
+                        ),
+                        html.Div(id='grafico_Barras_CO2')
                     ]
                 ),
                 html.Div(className='grafico_3',
                     children = [
-                        html.Div(id='Texto3', children=[
+                        html.Div(className='T3', children=[
                             html.H1('Gráfico de Barras', id="T_Grafico3"),
+                            html.H2(
+                                children=[
+                                    html.P('São apresentados os dados de emissão de CO2 ao longo do tempo, especificados por cada continente, sendo apresentada a África primeiramente.'), html.P('É evidente o crescimento das emissões em todos os continentes. Tendo como partida o ano de 1987, as emissões desde o começo do gráfico já se apresentam altas, e em alguns continentes houve uma pequena queda entre os anos de 2019 e 2020.')
+                                ], id='T3'
+                            )
                             ]
                         ),
                         html.Div(className='g3',
                             children=[
-                                dcc.Dropdown(continents, value='Africa' , id='continentes'),
+                                dcc.Dropdown(continents, value='Africa' , id='continentes', style={
+                                    'border-radius':'10px'
+                                }),
                                 dcc.Graph(
                                     id='Grafico_Barras_CO2',
                                     figure=fig3
                                 )
                             ]
-                        )
+                        ),
+                        html.Div(id='grafico_Pizza_CO2')
                     ]
                 ),
                 html.Div(id="grafico4",className='grafico_4',
                     children = [
-                        html.Div(id='Texto4', children=[
-                            html.H1('Gráfico de Pizza', id="T_Grafico4"),
+                        html.Div(className='T4',
+                            children=[
+                                html.H1('Gráfico de Pizza', id="T_Grafico4"),
+                                html.H2(
+                                    children=[
+                                        html.P('Este gráfico apresenta os dados da emissão de CO2 por continentes em relação ao tempo, tendo início em 1987, ano no qual a Europa liderava as emissões no mundo, enquanto no ano final, 2020, o continente a liderar é a Ásia, sendo responsável por mais de um quarto da emissão global.'), html.P('A Ásia, entretanto, possui uma população altíssima, e balanceando sua emissão em relação a população, possui números baixos quando comparada com outros continentes.'), html.P('A América do Sul e a África apresentam um percentual pequeno, ambos têm emissão correspondente a voos e envio de mercadoria, mas esses dados não são considerados globalmente.')
+                                    ], id='T4'
+                                )
                             ]
                         ),
                         html.Div(className='g1',
                             children=[
-                                dcc.Dropdown(anos, value=1987, id='Anos'),
+                                dcc.Dropdown(anos, value=1987, id='Anos', style={
+                                    'border-radius':'10px'
+                                }),
                                 dcc.Graph(
                                     id='Grafico_Pizza_CO2',
                                     figure=fig4
