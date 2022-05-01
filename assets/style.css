@@ -14,6 +14,10 @@
     scroll-behavior: smooth;
 }
 
+body p{
+    text-indent: 3em;
+}
+
 .container {
     min-width: 500px;
     align-items: center;
@@ -135,6 +139,7 @@
     width: 100vw;
     height: auto;
     position: relative;
+    flex-wrap: wrap;
 }
 
 #T_Grafico2{
@@ -144,13 +149,15 @@
 }
 
 #T2{
-    position: absolute;
+    position: relative;
     font-family: IBM Plex Sans;
     text-align: justify;
     font-size: 20px;
     margin-top: 30px;
     margin-left: 180px;
     width: 480px;
+    z-index: 2;
+    float:left;
 }
 
 .grafico_2 #Grafico-Mapa{
@@ -158,8 +165,10 @@
     margin-right: 100px;
     margin-bottom: 20px;
     width: 40%;
-    max-width: 50%;
+    min-width: 500px;
     background-color:rgba(54,173,185,0);
+    position: relative;
+    z-index: 1;
 }
 
 .grafico_3{
@@ -206,7 +215,6 @@
     max-width: 50%;
     margin: 10px;
     float: right;
-    
 }
 
 #Anos{
@@ -353,22 +361,19 @@
         justify-content: center;
     }
     
-    #T_Grafico2{
-        margin-top: 15px;
-        text-align: center;
-        font-family: Archive;
-    }
-    
     #T2{
         font-family: IBM Plex Sans;
         text-align: justify;
         font-size: 20px;
-        width: 480px;
+        width: 500px;
+        margin-right: 150px;
     }
     
     .grafico_2 #Grafico-Mapa{
-        width: 40%;
-        max-width: 50%;
+        width: 100vw;
+        max-width: 75vw;
+        margin-left: 10vw;
+        justify-content: center;
         background-color:rgba(54,173,185,0);
     }
     

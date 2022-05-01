@@ -181,7 +181,7 @@ app.layout = html.Main(id='graphs', className='container',
                             html.H1('Gráfico de Linha', id="T_Grafico1"),
                             html.H2(
                                 children=[
-                                    ('Como as emissões de CO2 mudaram ao longo do tempo?'), html.Br(), html.Br(), ('Pode-se notar o crescimento global da emissão por tonelada de CO2 em relação ao tempo, tendo início em 1750 e possuindo dados até 2020.'), html.Br(), html.Br(), ('Por meio deste gráfico, é possível observar uma emissão quase nula nos primeiros cem anos, seguida de uma alta a partir do século XX, momento no qual a humanidade começou processos maiores de industrialização.'), html.Br(), html.Br(), ('Ao final do século XX, já havia atingido 22 bilhões de toneladas, com o gráfico ainda tendendo a crescer.'), html.Br(), html.Br(), ('Nos últimos anos, a emissão de CO2 está próxima das 35 bilhões de toneladas. Vê-se que o crescimento se estabilizou no final do gráfico, porém ainda não atingiu o nível máximo.')
+                                    html.P('Como as emissões de CO2 mudaram ao longo do tempo?'), html.P('Pode-se notar o crescimento global da emissão por tonelada de CO2 em relação ao tempo, tendo início em 1750 e possuindo dados até 2020.'), html.P('Por meio deste gráfico, é possível observar uma emissão quase nula nos primeiros cem anos, seguida de uma alta a partir do século XX, momento no qual a humanidade começou processos maiores de industrialização.'), html.P('Ao final do século XX, já havia atingido 22 bilhões de toneladas, com o gráfico ainda tendendo a crescer.'), html.P('Nos últimos anos, a emissão de CO2 está próxima das 35 bilhões de toneladas. Vê-se que o crescimento se estabilizou no final do gráfico, porém ainda não atingiu o nível máximo.')
                                 ], id='T1'
                             )
                             ]
@@ -200,7 +200,7 @@ app.layout = html.Main(id='graphs', className='container',
                             html.H1('Gráfico de Mapa', id="T_Grafico2"),
                             html.H2(
                                 children=[
-                                    ('A relação da emissão de CO2 em cada país do mundo de acordo com o tempo é o foco deste gráfico.'), html.Br(), html.Br(), ('Países que emitem em maior escala costumam ser produtores de petróleo e gás natural ou serem ocupados por uma grande população. Há também um fator de desenvolvimento, visto que países menos desenvolvidos se apresentam com emissões muito baixas em comparação com grandes potências mundiais.'), html.Br(), html.Br(),  ('Utilizando o recurso do gráfico para comparar datas, em 1750 o Reino Unido era o maior emissor, enquanto atualmente o norte da América e a Ásia assumem o topo das emissões.')
+                                    html.P('A relação da emissão de CO2 em cada país do mundo de acordo com o tempo é o foco deste gráfico.'), html.P('Países que emitem em maior escala costumam ser produtores de petróleo e gás natural ou serem ocupados por uma grande população. Há também um fator de desenvolvimento, visto que países menos desenvolvidos se apresentam com emissões muito baixas em comparação com grandes potências mundiais.'), html.P('Utilizando o recurso do gráfico para comparar datas, em 1750 o Reino Unido era o maior emissor, enquanto atualmente o norte da América e a Ásia assumem o topo das emissões.')
                                 ], id='T2'
                             )
                         ]
