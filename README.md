@@ -53,8 +53,8 @@
 
 # Considerações finais
 
-O projeto tem como objetivo a criação de gráficos para a análise e comparação de um tema de livre escolha.
-Em conjunto, escolhemos tratar sobre a emissão de CO2 global.
+<h4> O projeto tem como objetivo a criação de gráficos para a análise e comparação de um tema de livre escolha.
+Em conjunto, escolhemos tratar sobre a emissão de CO2 global. </h4>
 
 <b>Autores:</b><br>
 Alana Gabriele Amorim Silva<br>
