@@ -1,4 +1,4 @@
-# APC-Dashboard
+# APC-Dashboard-CO2
 
 <h4>DashBoard e gráficos desenvolvido em equipe durante o curso de Algoritmos e Programação de Computadores (APC) na UnB 2.2021</h4>
 <br>
@@ -51,10 +51,10 @@
   
 </div>
 
-# Dashboard-CO2
-Projeto feito para avaliação final da disciplina Algoritmos e Programação de Computadores.
+# Considerações finais
 
-Tem como objetivo a criação de gráficos para a análise e comparação de um tema de livre escolha. Em conjunto, escolhemos tratar sobre a emissão de CO2 global.
+O projeto tem como objetivo a criação de gráficos para a análise e comparação de um tema de livre escolha.
+Em conjunto, escolhemos tratar sobre a emissão de CO2 global.
 
 <b>Autores:</b><br>
 Alana Gabriele Amorim Silva<br>
